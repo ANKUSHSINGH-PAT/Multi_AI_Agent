@@ -1,5 +1,7 @@
 from fastapi import FastAPI, UploadFile, HTTPException
 from fastapi.responses import StreamingResponse
+from common.custom_exception import CustomException
+from common.logger import logging
 from app.backend.xaml_parser import parse_xaml
 from app.backend.rules import detect_errors
 from app.backend.llm_explainer import explain
@@ -7,6 +9,8 @@ from app.backend.pdf_report import generate_pdf
 
 
 app = FastAPI()
+
+logging.info("Starting ICA Copilot application")
 
 @app.post("/upload")
 async def upload(file: UploadFile):
