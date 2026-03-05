@@ -1,23 +1,28 @@
-# ---------- Base Image ----------
+## Parent image
 FROM python:3.10-slim
 
-# ---------- Set Working Directory ----------
+## Essential environment variables
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+## Work directory inside the docker container
 WORKDIR /app
 
-# ---------- Install System Dependencies ----------
+## Installing system dependancies
 RUN apt-get update && apt-get install -y \
     build-essential \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
-# ---------- Copy Project ----------
+## Copying ur all contents from local to app
 COPY . .
 
-# ---------- Install Dependencies ----------
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+## Run setup.py
+RUN pip install --no-cache-dir -e .
 
-# ---------- Expose Port ----------
+# Used PORTS
 EXPOSE 8501
+EXPOSE 9999
 
-# ---------- Run Backend ----------
+# Run the app 
 CMD ["python", "app/main.py"]
