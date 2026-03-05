@@ -17,3 +17,4 @@ accelerate
 groq
 python-dotenv
 reportlab
+dvc
