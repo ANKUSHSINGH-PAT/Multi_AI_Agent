@@ -10,7 +10,7 @@ from app.backend.pdf_report import generate_pdf
 
 app = FastAPI()
 
-logging.info("Starting ICA Copilot application")
+logging.info("Starting UiPath Workflow Analyzer application")
 
 @app.post("/upload")
 async def upload(file: UploadFile):
