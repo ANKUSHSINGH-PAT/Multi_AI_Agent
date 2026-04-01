@@ -18,3 +18,4 @@ groq
 python-dotenv
 reportlab
 dvc
+mcp
