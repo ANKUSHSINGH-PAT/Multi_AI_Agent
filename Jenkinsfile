@@ -69,6 +69,15 @@ pipeline{
     //         }
     //     }
     //  }
+
+        // ─────────────────────────────────────────────────────────────────
+        // Deploy to Kubernetes (EKS)
+        // Pre-requisites on the Jenkins agent:
+        //   • kubectl installed
+        //   • AWS credentials that can call  eks:DescribeCluster
+        //   • The EKS cluster name stored in Jenkins credential 'eks-cluster-name'
+        //   • GROQ_API_KEY and TAVILI_API_KEY stored in Jenkins credentials
+        // ─────────────────────────────────────────────────────────────────
         
     }
 }
