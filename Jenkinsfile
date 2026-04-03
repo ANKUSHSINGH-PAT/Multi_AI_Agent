@@ -19,7 +19,7 @@ pipeline{
             }
         }
 
-    stage('SonarQube Analysis') {
+        stage('SonarQube Analysis') {
         environment {
             SONAR_TOKEN = credentials('sonarqube-token')
         }
@@ -29,7 +29,7 @@ pipeline{
                 $SONAR_SCANNER_HOME/bin/sonar-scanner \
                 -Dsonar.projectKey=multi_ai_agent \
                 -Dsonar.sources=. \
-                -Dsonar.host.url=http://172.20.0.3:9000 \
+                -Dsonar.host.url=http://host.docker.internal:9000 \
                 -Dsonar.token=$SONAR_TOKEN
                 '''
             }
