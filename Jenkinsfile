@@ -1,13 +1,13 @@
 pipeline{
     agent any
 
-    // environment {
-    //     SONAR_PROJECT_KEY = 'multi_ai_agent'
-	// 	SONAR_SCANNER_HOME = tool 'SonarQube'
-    //     // AWS_REGION = 'us-east-1'
-    //     // ECR_REPO = 'mult_ai_agent'
-    //     // IMAGE_TAG = 'latest'
-	// }
+    environment {
+        SONAR_PROJECT_KEY = 'multi_ai_agent'
+		SONAR_SCANNER_HOME = tool 'SonarQube'
+        // AWS_REGION = 'us-east-1'
+        // ECR_REPO = 'mult_ai_agent'
+        // IMAGE_TAG = 'latest'
+	}
 
     stages{
         stage('Cloning Github repo to Jenkins'){
@@ -19,22 +19,22 @@ pipeline{
             }
         }
 
-        // stage('SonarQube Analysis'){
-		// 	steps {
-		// 		withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
+        stage('SonarQube Analysis'){
+			steps {
+				withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
     					
-		// 			withSonarQubeEnv('SonarQube') {
-    	// 					sh """
-		// 				${SONAR_SCANNER_HOME}/bin/sonar-scanner \
-		// 				-Dsonar.projectKey=${SONAR_PROJECT_KEY} \
-		// 				-Dsonar.sources=. \
-		// 				-Dsonar.host.url=http://host.docker.internal:9000 \
-		// 				-Dsonar.login=${SONAR_TOKEN}
-		// 				"""
-		// 			}
-		// 		}
-		// 	}
-		// }
+					withSonarQubeEnv('SonarQube') {
+    						sh """
+						${SONAR_SCANNER_HOME}/bin/sonar-scanner \
+						-Dsonar.projectKey=${SONAR_PROJECT_KEY} \
+						-Dsonar.sources=. \
+						-Dsonar.host.url=http://host.docker.internal:9000 \
+						-Dsonar.login=${SONAR_TOKEN}
+						"""
+					}
+				}
+			}
+		}
 
     // stage('Build and Push Docker Image to ECR') {
     //         steps {
