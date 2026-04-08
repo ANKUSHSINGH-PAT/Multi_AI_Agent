@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# DVC
+.dvc/
+*.dvc
+
+# Git
+.git/
+.gitignore
+
+# Logs
+app/logs/
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# Lock files
+uv.lock
+
+# Jenkins
+Jenkinsfile
+custom_jenkins/
+
+# Docs
+README.md
